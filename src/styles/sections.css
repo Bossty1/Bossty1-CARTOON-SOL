@@ -329,13 +329,12 @@
   position: absolute;
   z-index: 3;
   right: clamp(-40px, -2vw, 0px);
-  bottom: clamp(58px, 9vw, 118px);
+  bottom: clamp(14px, 3vw, 46px);
   width: clamp(240px, 34vw, 470px);
   height: auto;
   object-fit: contain;
   pointer-events: none;
-  filter: drop-shadow(0 14px 18px rgba(56, 38, 3, 0.25));
-  animation: bob 6.5s ease-in-out infinite;
+  filter: drop-shadow(0 10px 12px rgba(56, 38, 3, 0.25));
 }
 
 .cloud {
@@ -378,16 +377,6 @@
   }
 }
 
-@keyframes bob {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-14px) rotate(-1.2deg);
-  }
-}
-
 @media (max-width: 900px) {
   .hero__inner {
     grid-template-columns: 1fr;
@@ -401,7 +390,7 @@
 
   .hero__hares {
     width: clamp(210px, 56vw, 340px);
-    bottom: clamp(48px, 14vw, 96px);
+    bottom: clamp(20px, 5vw, 56px);
     right: -6vw;
   }
 }
