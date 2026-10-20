@@ -1,0 +1,58 @@
+{
+  "site": {
+    "name": "CARTOON AI // $CARTOON",
+    "handle": "@CARTOON_SOL",
+    "xUrl": "https://x.com/CARTOON_SOL",
+    "telegram": "https://t.me/cartoon_Labs",
+    "ticker": "$CARTOON",
+    "chain": "Solana",
+    "contract": "8fwSfhLoLmoAWmVtgpTsb99vb6bg1nkkFgW7cyK3pump"
+  },
+  "pages": [
+    {
+      "slug": "prompt-card",
+      "kind": "prompt",
+      "title": "Try this prompt — CARTOON AI",
+      "description": "The sample prompt from the CARTOON AI generator: “A young couple went on a romantic walk in the park.”",
+      "eyebrow": "Prompt card",
+      "headline": "A young couple went on a romantic walk in the park",
+      "body": "This is the sample prompt shipped with CARTOON AI. Type it as-is, or start from it and make it yours — prompts are improved automatically by the model's built-in LLM pass before generation.",
+      "prompt": "A young couple went on a romantic walk in the park",
+      "image": "/og/prompt-card.jpg",
+      "sourceImage": "/assets/brand/og.jpg",
+      "cta": { "label": "Follow @CARTOON_SOL", "href": "https://x.com/CARTOON_SOL" }
+    },
+    {
+      "slug": "gallery-pick",
+      "kind": "post",
+      "title": "Made with CARTOON AI",
+      "description": "From the @CARTOON_SOL timeline: “We are happy to introduce a new AI feature. Now you can transform anything into Cartoon style!”",
+      "eyebrow": "From the timeline",
+      "headline": "Now you can transform anything into cartoon style",
+      "body": "Posted by the account on Feb 19, 2025 to introduce the style-transfer feature. Every image in the gallery was produced by the project's own model and posted by the account itself — nothing here is stock art.",
+      "image": "/og/gallery-pick.jpg",
+      "sourceImage": "/media/photo-1892265768835801596.jpg",
+      "postLink": "https://x.com/CARTOON_SOL/status/1892265768835801596",
+      "cta": { "label": "Open the post on X", "href": "https://x.com/CARTOON_SOL/status/1892265768835801596" }
+    },
+    {
+      "slug": "quick-facts",
+      "kind": "facts",
+      "title": "$CARTOON quick facts",
+      "description": "What CARTOON AI is, the official contract on Solana, and every verified link. No price, no market cap, no forecasts.",
+      "eyebrow": "Quick facts",
+      "headline": "$CARTOON on Solana",
+      "body": "CARTOON AI turns photos into cartoon images and animated clips. Share this card when someone asks what the project is or which contract is the real one.",
+      "facts": [
+        { "label": "Project", "value": "CARTOON AI — image-to-cartoon and image-to-video generator" },
+        { "label": "Ticker", "value": "$CARTOON on Solana" },
+        { "label": "Contract", "value": "8fwSfhLoLmoAWmVtgpTsb99vb6bg1nkkFgW7cyK3pump" },
+        { "label": "Chat", "value": "t.me/cartoon_Labs" },
+        { "label": "Account", "value": "x.com/CARTOON_SOL" }
+      ],
+      "image": "/og/quick-facts.jpg",
+      "sourceImage": "/assets/brand/og.jpg",
+      "cta": { "label": "Check the contract on Solscan", "href": "https://solscan.io/token/8fwSfhLoLmoAWmVtgpTsb99vb6bg1nkkFgW7cyK3pump" }
+    }
+  ]
+}

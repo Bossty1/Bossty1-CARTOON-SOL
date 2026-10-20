@@ -1,0 +1,24 @@
+# Build output
+dist
+cartoon-ai-studio
+
+# Dependencies
+node_modules
+
+# Vercel / env
+.vercel
+.env*
+
+# TS build cache
+*.tsbuildinfo
+
+# Logs and local scratch
+preview.log
+preview.err
+wallet_alerts.log
+wallet_events.jsonl
+seen_blocks.json
+
+# OS / editor
+.DS_Store
+Thumbs.db

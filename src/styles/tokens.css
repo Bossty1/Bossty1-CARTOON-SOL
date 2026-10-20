@@ -1,0 +1,68 @@
+/* CARTOON AI — design tokens (cartoon landscape palette, hand-rolled) */
+
+:root {
+  /* Scene colors */
+  --sky-1: #a8d8f0;
+  --sky-2: #90c0d8;
+  --sky-3: #78c0d8;
+  --grass-1: #90a860;
+  --teal-soft: #90d8d8;
+  --cream: #f3eed6;
+  --cream-2: #fff6da;
+  --paper: #fffdf5;
+  --gold: #f0c048;
+  --coral: #ff7f50;
+  --coral-deep: #e8623a;
+  --green-title: #668c4e;
+  --leaf-title: #668c4e;
+
+  /* Ink */
+  --brown: #382603;
+  --ink: #303030;
+  --ink-soft: #4d473a;
+  --muted: #756b58;
+  --line: rgba(56, 38, 3, 0.35);
+
+  /* Borders (cartoon ink outlines) */
+  --outline: 2px solid var(--brown);
+  --outline-2: 3px solid var(--brown);
+
+  /* Type */
+  --font-display: "Delicious Handrawn", "Segoe Print", cursive;
+  --font-accent: "Knewave", "Arial Black", system-ui, sans-serif;
+  --font-body: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Fluid type scale */
+  --step--1: clamp(0.86rem, 0.83rem + 0.16vw, 0.93rem);
+  --step-0: clamp(1rem, 0.97rem + 0.2vw, 1.09rem);
+  --step-1: clamp(1.19rem, 1.12rem + 0.38vw, 1.36rem);
+  --step-2: clamp(1.41rem, 1.3rem + 0.6vw, 1.69rem);
+  --step-3: clamp(1.67rem, 1.5rem + 0.9vw, 2.06rem);
+  --step-4: clamp(1.97rem, 1.72rem + 1.35vw, 2.54rem);
+  --step-5: clamp(2.4rem, 1.9rem + 2.6vw, 3.7rem);
+
+  /* Shape */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 26px;
+
+  /* Shadows (sticker-style offsets) */
+  --shadow-pop: 6px 6px 0 var(--brown);
+  --shadow-float: 0 14px 30px rgba(56, 38, 3, 0.22);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --nav-h: 74px;
+  --wrap: 1140px;
+  --section-y: clamp(3.25rem, 7vw, 5.5rem);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-h: 64px;
+    --section-y: clamp(2.5rem, 9vw, 3.5rem);
+  }
+}

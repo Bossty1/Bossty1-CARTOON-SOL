@@ -1,0 +1,567 @@
+/* =========================================================
+   Creator Hub — additive styles only.
+   Reuses the existing design tokens (tokens.css) so it matches
+   the rest of the site. Nothing here overrides existing classes.
+   ========================================================= */
+
+/* ---- nav launcher ---- */
+
+.nav__launcher {
+  --btn-bg: var(--gold);
+  box-shadow: 3px 3px 0 var(--brown);
+}
+
+@media (max-width: 1020px) {
+  .nav__launcher-label {
+    display: none;
+  }
+
+  .nav__launcher {
+    padding: 0.5rem 0.7rem;
+  }
+}
+
+/* ---- hub shell ---- */
+
+.creator-hub__tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: clamp(1.4rem, 1rem + 2vw, 2.4rem);
+}
+
+.creator-hub__tool {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+  padding: 1rem;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-pop);
+  transition: transform 0.16s var(--ease-pop), box-shadow 0.16s var(--ease-out);
+}
+
+.creator-hub__tool:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--brown);
+}
+
+.creator-hub__tool[data-active='true'] {
+  background: var(--gold);
+}
+
+.creator-hub__tool-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: var(--outline);
+  color: var(--brown);
+}
+
+.creator-hub__tool-label {
+  font-family: var(--font-accent);
+  font-size: var(--step-0);
+}
+
+.creator-hub__tool-text {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+/* ---- creator studio ---- */
+
+.creator__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.creator__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: var(--outline);
+  background: var(--paper);
+  font-family: var(--font-accent);
+  color: var(--brown);
+}
+
+.creator__tab[data-active='true'] {
+  background: var(--coral);
+}
+
+.creator__engine {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  background: var(--cream);
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.9rem;
+  font-size: var(--step--1);
+  margin-bottom: 1.2rem;
+}
+
+.creator__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.1rem;
+}
+
+.creator__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.creator__panel-title {
+  font-size: var(--step-1);
+}
+
+.creator__drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  border: 3px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--cream-2);
+}
+
+.creator__drop[data-dragging='true'] {
+  border-color: var(--coral);
+  background: var(--cream);
+}
+
+.creator__hint {
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.creator__preview img {
+  width: 100%;
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+}
+
+.creator__meta {
+  font-size: var(--step--1);
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.creator__preview-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.creator__styles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.6rem;
+}
+
+.creator__style {
+  text-align: left;
+  padding: 0.7rem;
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.creator__style[data-active='true'] {
+  background: var(--gold);
+}
+
+.creator__style-name {
+  font-family: var(--font-accent);
+  font-size: var(--step-0);
+}
+
+.creator__style-desc {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.creator__field,
+.meme__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: var(--step--1);
+}
+
+.creator__field textarea,
+.meme__field input[type='text'],
+.meme__field select,
+.field input,
+.field textarea {
+  padding: 0.6rem;
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font: inherit;
+  color: var(--ink);
+}
+
+.creator__progress {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cream);
+  overflow: visible;
+}
+
+.creator__bar {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--coral);
+  transition: width 0.2s var(--ease-out);
+}
+
+.creator__progress span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.creator__result figure img {
+  width: 100%;
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+}
+
+.creator__result figcaption {
+  font-size: var(--step--1);
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.creator__result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.creator__empty,
+.community-hub__empty {
+  color: var(--muted);
+  font-size: var(--step--1);
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.creator__error,
+.field__error {
+  color: var(--coral-deep);
+  font-size: var(--step--1);
+  font-style: normal;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+/* ---- meme maker ---- */
+
+.meme {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr);
+  gap: 1rem;
+}
+
+@media (max-width: 760px) {
+  .meme {
+    grid-template-columns: 1fr;
+  }
+}
+
+.meme__preview {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #1c1502;
+  border: var(--outline);
+  border-radius: var(--radius);
+  min-height: 220px;
+  overflow: hidden;
+}
+
+.meme__preview img {
+  max-height: 480px;
+  width: auto;
+  max-width: 100%;
+}
+
+.meme__placeholder {
+  color: var(--cream);
+  text-align: center;
+  padding: 2rem;
+}
+
+.meme__busy {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 21, 2, 0.25);
+}
+
+.meme__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.meme__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.meme__align {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.meme__align-btn {
+  flex: 1;
+  padding: 0.4rem;
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-size: var(--step--1);
+  text-transform: capitalize;
+}
+
+.meme__align-btn[data-active='true'] {
+  background: var(--teal-soft);
+}
+
+.meme__check,
+.drop__check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: var(--step--1);
+}
+
+/* ---- community hub ---- */
+
+.community-hub__bar,
+.community-hub__controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+
+.community-hub__controls {
+  justify-content: space-between;
+}
+
+.community-hub__sort {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.community-hub__grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.community-hub__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.community-hub__thumb {
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  padding: 0;
+  background: none;
+}
+
+.community-hub__thumb img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.community-hub__item-title {
+  font-size: var(--step-0);
+}
+
+.community-hub__style {
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.community-hub__actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.moderation {
+  margin-top: 1.6rem;
+  border-top: 2px dashed var(--line);
+  padding-top: 1rem;
+}
+
+.moderation__toggle {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  background: var(--cream);
+  border: var(--outline);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-accent);
+  color: var(--brown);
+}
+
+.moderation__list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.moderation__row {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem;
+}
+
+.moderation__row img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: var(--outline);
+}
+
+.moderation__actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* ---- challenges ---- */
+
+.challenges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.challenge-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.challenge-card__cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: var(--outline);
+}
+
+.challenge-card__status {
+  text-transform: capitalize;
+  width: fit-content;
+}
+
+.challenge-card__status[data-status='live'] {
+  background: var(--teal-soft);
+}
+
+.challenge-card__prompt {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+}
+
+.challenge-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: 0.6rem;
+}
+
+.challenge-note {
+  grid-column: 1 / -1;
+  font-size: var(--step--1);
+  color: var(--muted);
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+/* ---- submit dialog ---- */
+
+.submit-dialog {
+  width: min(100%, 560px);
+}
+
+.submit-dialog__title {
+  font-size: var(--step-2);
+}
+
+.submit-dialog__note {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.submit-dialog__preview {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border: var(--outline);
+  border-radius: var(--radius-sm);
+  margin-block: 0.8rem;
+}
+
+.submit-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.submit-dialog__actions {
+  display: flex;
+  gap: 0.6rem;
+}

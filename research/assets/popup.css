@@ -1,0 +1,290 @@
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url(image/bgpp.png);
+  background-size: cover;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.8s ease 0s;
+}
+
+.popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup.open .popup__content {
+  transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+  opacity: 1;
+}
+
+.popup__area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+  transition: all 0.8s ease 0s;
+  max-width: 80%;
+  margin: 0px auto;
+}
+@media (max-width: 998px) {
+  .popup__body {
+    padding: 0;
+    max-width: 100%;
+  }
+}
+.popup__content {
+  background-color: #fff;
+  color: #000;
+  max-width: 1400px;
+  border-radius: 30px;
+  height: 90vh;
+  width: 100%;
+  padding: 36px 33px;
+  /* overflow: scroll; */
+  position: relative;
+  transition: all 0.8s ease 0s;
+  opacity: 0;
+
+  transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+}
+.wpwp {
+  overflow: auto;
+}
+@media (max-width: 998px) {
+  .popup__content {
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+.popup__content_image {
+  padding: 0;
+}
+
+.popup__image img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.popup__close {
+  position: absolute;
+  top: 36px;
+  right: 51px;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+.popup__title {
+  font-size: 40px;
+  margin: 0px 0px 30px 0px;
+  text-align: center;
+  color: #000;
+}
+
+.modal__content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-icon {
+  margin: 0 auto;
+  display: block;
+}
+
+.message-field-wrap {
+  border: 3px solid #ffe5b2;
+  border-radius: 30px;
+  display: flex;
+  flex: auto;
+}
+
+.message-field-wrap textarea {
+  background: transparent;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  padding: 33px 110px 34px 36px;
+  color: #382603;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.message-field-wrap .send-icon {
+  margin-right: 34px;
+  cursor: pointer;
+}
+
+.modal__form {
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  gap: 20px;
+
+  /* align-items: center; */
+}
+@media (max-width: 998px) {
+  .modal__form {
+    /* padding-top: 20px; */
+    border-top: 2px solid #ffe5b2;
+    grid-template-columns: 20% 1fr;
+
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 20px;
+    padding-bottom: 0;
+  }
+}
+.modal__form > label {
+  cursor: pointer;
+}
+.modal__form > label img {
+  width: 100%;
+}
+.videoForm-bottom-wp {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  gap: 20px;
+  border: 3px solid #ffe5b2;
+  border-radius: 1.5vw;
+  overflow: hidden;
+  padding: 1.5vw;
+  font-size: 1.5vw;
+  align-items: flex-start;
+}
+@media (max-width: 998px) {
+  .videoForm-bottom-wp {
+    grid-template-columns: 1fr 40px;
+    border: none;
+  }
+}
+.modal__form button img {
+  width: 100%;
+}
+.modal__form button {
+  padding: 0px;
+  background-color: transparent;
+  margin: 0 !important;
+}
+.modal__form button:hover {
+  background: transparent;
+}
+.modal__form button img {
+  width: 100%;
+}
+.videoForm-bottom-wp input {
+  font-size: 1.5vw;
+  width: 100%;
+}
+@media (max-width: 998px) {
+  .videoForm-bottom-wp input {
+    font-size: 4.5vw;
+  }
+}
+.modal-upload {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+#downloadSection {
+  max-width: 350px;
+  padding-bottom: 20px;
+}
+#downloadSection a img {
+  width: 100%;
+}
+#downloadSection._active {
+  display: grid !important;
+  grid-template-columns: 1fr 66px;
+  align-items: flex-end;
+  gap: 12px;
+}
+#downloadSection video {
+  border-radius: 1vw;
+  border: 2px solid #ffe5b2;
+}
+.show-1200 {
+  display: none !important;
+}
+.user-message {
+  max-width: 264px;
+  margin-left: auto;
+  font-size: 1.5vw;
+  display: none;
+  text-align: right;
+}
+.user-message._active {
+  display: block;
+}
+@media (max-width: 998px) {
+  .user-message {
+    font-size: 16px;
+  }
+}
+.user-message img {
+  width: 80%;
+  margin-left: auto;
+  display: block;
+  margin-bottom: 5px;
+  border: 2px solid #ffe5b2;
+  border-radius: 20px;
+}
+@media (max-width: 1200px) {
+  .show-1200 {
+    display: block !important;
+  }
+
+  .hide-1200 {
+    display: none !important;
+  }
+
+  .modal-icon {
+    margin-left: 0;
+  }
+
+  .message-field-wrap {
+    padding-top: 10px;
+    min-width: calc(100% + 66px);
+    margin-left: -33px;
+    border: 0;
+    margin-bottom: -26px;
+    border-top: 2px solid #ffe5b2;
+    border-radius: 0;
+  }
+
+  .modal-upload {
+    min-width: 54px;
+    object-fit: contain;
+    margin-left: 16px;
+  }
+
+  .message-field-wrap .send-icon {
+    margin-right: 16px;
+  }
+
+  .message-field-wrap textarea {
+    padding: 20px;
+  }
+}

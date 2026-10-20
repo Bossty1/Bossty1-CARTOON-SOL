@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Cartoon AI</title>
+      <link rel="stylesheet" href="./null.css" />
+      <link rel="stylesheet" href="./style.css?v6" />
+      <link rel="stylesheet" href="./popup.css?v6" />
+      <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon" />
+      <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet" />
+   </head>
+
+   <body>
+      <div class="wrapper">
+		<div id="chat" class="popup">
+            <div class="popup__body">
+				<div id="loadingText" class=""> <span></span> <p>Takes up to 2-3 minutes</p></div>
+               <div class="popup__content">
+                  <a data-close-popup href="#" class="popup__close flex-center">
+                     <img src="./image/close.svg" alt="close" />
+                  </a>
+				 
+                  <div class="modal__content">
+					<div class="wpwp">
+                     <img src="./image/modal-icon.svg" alt="modal-icon" class="modal-icon" />
+					  <div class="user-message">
+					<img src="" alt="">
+
+					<p>A young couple went on a romantic walk in the park</p>
+				  </div>
+                     <div id="downloadSection" style="display: none; margin-bottom: 20px;">
+                        <video id="videoPlayer" controls style="width: 100%;"></video>
+						<a href="#" target="_blank"  download id="download-video" class="download-video"><img src="image/download.png" alt=""></a>
+                     </div>
+                  </div>
+                     <form id="videoForm" novalidate class="modal__form">
+                        <label for="imageUpload"><img src="image/selinm.png" alt=""></label>
+
+                        <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required />
+
+                        <!-- <label for="prompt">Description (Prompt):</label> -->
+<div class="videoForm-bottom-wp">
+                        <input type="text" id="prompt" name="prompt" placeholder="Enter video description" required />
+           
+                        <button type="submit" id="submitButton" class="dark-button"><img src="image/play.png" alt=""></button>
+</div>
+
+                        <p id="status" style="display: none;"></p>
+
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div id="image-popup" class="popup">
+            <div class="popup__body">
+				<div id="loadingText" class=""> <span></span> <p>Takes up to 2-3 minutes</p></div>
+               <div class="popup__content">
+                  <a data-close-popup href="#" class="popup__close flex-center">
+                     <img src="./image/close.svg" alt="close" />
+                  </a>
+				 
+                  <div class="modal__content">
+					<div class="wpwp">
+                     <img src="./image/modal-icon.svg" alt="modal-icon" class="modal-icon" />
+                     <div class="images-modal">
+                        <img src="" class="images-modal__chat" alt="Uploaded Image">
+						<div class="arrow-precess"><span>Generating image</span> <p>Ready</p> <img src="image/right-arrow-icon-free-svg-file.png" alt=""></div>
+                        <img src="" class="processed-image" alt="Processed Image"> <!-- Добавил -->
+                    </div>
+                 <form id="imgForm" novalidate class="modal__form _custom">
+                  <label for="imageUpload"><img src="image/selinm.png" alt=""></label>
+                  <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required />
+                  <div class="videoForm-bottom-wp _custom">
+                      <button type="submit" id="submitButton" class="dark-button"><img src="image/play.png" alt=""></button>
+                  </div>
+                  <p id="status" style="display: none;"></p>
+              </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+		
+      </div>
+ 
+
+         <!-- <section class="first bg__wrap">
+            <img src="./image/cloud-1.svg" class="cloud cloud-1" />
+            <img src="./image/cloud-1.svg" class="cloud cloud-3" />
+            <img src="./image/cloud-3.svg" class="cloud cloud-2" />
+            <img src="./image/first__bg.png" alt="first__bg" class="first__bg hide-1100" />
+            <img src="./image/first__bg_mobile.png" alt="first__bg_mobile" class="first__bg show-1100" />
+            <div class="networks first__networks">
+               <a href="Orel" class="_scale_hover">
+                  <img src="./image/dex.svg" alt="dex" />
+                  <span>Dex Screener</span>
+               </a>
+               <a href="Tools" class="_scale_hover">
+                  <img src="./image/Tools.svg" alt="Tools" />
+                  <span>Dex Tools</span>
+               </a>
+               <a href="Twitter" class="_scale_hover">
+                  <img src="./image/twitter.svg" alt="Twitter" />
+                  <span>Twitter</span>
+               </a>
+               <a href="Telegram" class="_scale_hover">
+                  <img src="./image/telegram.svg" alt="telegram" />
+                  <span>Telegram</span>
+               </a>
+            </div>
+            <div class="first__content" data-anim-on-scroll>
+               <p class="first-text hide-1100">
+                  A young couple went on a<br />
+                  romantic walk in the park
+               </p>
+               <h1 class="first__title">Cartoon AI</h1>
+               <p class="first-text show-1100">
+                  A young couple went on a<br />
+                  romantic walk in the park
+               </p>
+               <a href="Telegram" class="first__btn _scale_hover" data-open-popup="chat">
+                  <img src="./image/telegram-btn.svg" alt="" />
+               </a>
+            </div>
+         </section> -->
+      </div>
+
+      <!-- JavaScript for handling video generation -->
+      <script src="js/api.js?v2"></script>
+         <section class="first bg__wrap">
+            <img src="./image/cloud-1.svg" class="cloud cloud-1" />
+            <img src="./image/cloud-1.svg" class="cloud cloud-3" />
+            <img src="./image/cloud-3.svg" class="cloud cloud-2" />
+            <!--<img src="./image/first__grass.png" class="grass" alt="" />-->
+            <img src="./image/first__bg.png" alt="first__bg" class="first__bg hide-1100" />
+            <img src="./image/first__bg_mobile.png" alt="first__bg_mobile" class="first__bg show-1100" />
+            <div class="networks first__networks">
+               <a href="Orel" class="_scale_hover">
+                  <img src="./image/dex.svg" alt="dex" />
+                  <span>Dex Screener</span>
+               </a>
+               <a href="Tools" class="_scale_hover">
+                  <img src="./image/Tools.svg" alt="Tools" />
+                  <span>Dex Tools</span>
+               </a>
+               <a href="Twitter" class="_scale_hover">
+                  <img src="./image/twitter.svg" alt="Twitter" />
+                  <span>Twitter</span>
+               </a>
+               <a href="Telegram" class="_scale_hover">
+                  <img src="./image/telegram.svg" alt="telegram" />
+                  <span>Telegram</span>
+               </a>
+            </div>
+            <div class="first__content" data-anim-on-scroll>
+               <p class="first-text hide-1100">
+                 AI-powered image-to-video generator. Powered by high scalable LLM modules
+
+               </p>
+               <h1 class="first__title">Cartoon AI</h1>
+               <p class="first-text show-1100">
+                 AI-powered image-to-video generator. Powered by high scalable LLM modules
+
+               </p>
+			   <div class="bt-wp">
+               <a href="Telegram" class="first__btn _scale_hover" data-open-popup="chat">
+					<span>Video</span>
+                  <img src="./image/Group87.png" alt="" />
+               </a>
+
+			   <a href="Telegram" class="first__btn _scale_hover" data-open-popup="image-popup">
+					<span>Image</span>
+                  <img src="./image/Group87.png" alt="" />
+               </a>
+			   </div>
+            </div>
+            <!--<div class="first__hares">
+               <img src="./image/first-rabbit.png" alt="" />
+               <img src="./image/second-rabbit.png" alt="" />
+               <img src="./image/third-rabbit.png" alt="" />
+            </div>-->
+            <img
+               data-anim-on-scroll
+               data-delay="0.4"
+               src="./image/first__hares.png"
+               da
+               alt="first__hares"
+               class="_bottom_anim first__hares hide-1100"
+            />
+            <img src="./image/first__hares_mobile.png" alt="first__hares_mobile" class="first__hares show-1100" />
+         </section>
+         <section class="second bg__wrap">
+            <img src="./image/second__bg.png" alt="second__bg" class="bg hide-820" />
+            <img src="./image/second__bg_mobile.png" alt="second__bg_mobile" class="bg show-820" />
+            <div class="_container">
+               <div class="second__items">
+                  <div class="second__item _bottom_anim" data-anim-on-scroll data-delay="0.3">
+                     <img src="./image/second__item-1.png" alt="second__item-1" />
+                     <img
+                        src="./image/second__item_image-1.png"
+                        alt="second__item_image-1"
+                        class="second__item_image"
+                     />
+                     <div class="second__item_texts">
+                        <h3>LLM</h3>
+                        <p>We are using LLM models to improve your prompts for smoother and better generation</p>
+                     </div>
+                  </div>
+                  <div class="second__item _bottom_anim" data-anim-on-scroll data-delay="0.5">
+                     <img src="./image/second__item-3.png" alt="second__item-2" />
+                     <img
+                        src="./image/second__item_image-2.png"
+                        alt="second__item_image-2"
+                        class="second__item_image second__item_image-2"
+                     />
+                     <div class="second__item_texts">
+                        <h3>Animate</h3>
+                        <p>Video animation using AI technologies Animate your favorite characters or memes!</p>
+                     </div>
+                  </div>
+                  <div class="second__item _bottom_anim" data-anim-on-scroll data-delay="0.9">
+                     <img src="./image/second__item-2.png" alt="second__item-3" />
+                     <img
+                        src="./image/second__item_image-3.png"
+                        alt="second__item_image-3"
+                        class="second__item_image second__item_image_3"
+                     />
+                     <div class="second__item_texts">
+                        <h3>Free</h3>
+                        <p>Download and share our AI with friends!</p>
+                     </div>
+                  </div>
+               </div>
+               <a href="Dex" class="dex-btn _scale_hover">
+                  <img src="./image/dex-btn.svg" alt="dex-btn" />
+               </a>
+
+               <div class="second__bottom">
+                  <img
+                     src="./image/second__bottom__bg.png"
+                     alt="second__bottom__bg"
+                     class="second__bottom__bg hide-820"
+                  />
+                  <img
+                     src="./image/second__bottom__bg_1.png"
+                     alt="second__bottom__bg_1"
+                     class="second__bottom__bg show-820"
+                  />
+                  <div class="second__bottom_content">
+                     <h2 class="second__bottom_title">Examples</h2>
+
+					 <!-- <h3 class="images__title">A young</h3> -->
+                     <p class="images__text">
+                       Examples of videos, generated by our AI model. Create your own videos and share it everywhere!
+                     </p>
+                     <div class="second__images">
+                       <div class="video-play-last"><img src="image/prfl.png" alt=""><video  src="videos/replicate-prediction-kj2npqc4z9rm80cmyp682hamh0(1).mp4" data-masc="./image/second__image-1.svg"></video></div>
+						
+                        
+						<div class="video-play-last"><img src="image/prfl.png" alt=""><video  src="videos/tmp6iy7awnj.output.mp4" data-masc="./image/second__image-2.svg"></video></div>
+                       
+						<div class="video-play-last"><img src="image/prfl.png" alt=""><video  src="videos/tmp8nyhsj3k.output.mp4" data-masc="./image/second__image-3.svg"></video></div>
+                     </div>
+                     
+                     <div class="second__images">
+                        
+						<div class="video-play-last"><img src="image/prfl.png" alt=""> <video  src="videos/tmpbw6jdyjm.output.mp4" data-masc="./image/second__image-1.svg"></video></div>
+                       
+						<div class="video-play-last"><img src="image/prfl.png" alt=""><video  src="videos/tmpn4u5tp7k.output.mp4" data-masc="./image/second__image-2.svg"></video></div>
+                        
+						<div class="video-play-last"><img src="image/prfl.png" alt=""><video  src="videos/tmpxzlnfn4_.output.mp4" data-masc="./image/second__image-3.svg"></video></div>
+                     </div>
+                    
+                  </div>
+               </div>
+
+
+<script>
+	let videoPlayLast = document.querySelectorAll('.video-play-last');
+	for (let index = 0; index < videoPlayLast.length; index++) {
+		const element = videoPlayLast[index];
+		element.addEventListener('click', function(){
+			 let gt = element.querySelector('video')
+			 if(gt.paused){
+				gt.play()
+				element.classList.add('_active')
+			 }else{
+				gt.pause()
+				element.classList.remove('_active')
+			 }
+		})
+	}
+</script>
+
+               <div class="networks second__networks">
+                  <a href="Orel" class="_scale_hover">
+                     <img src="./image/dex.svg" alt="dex" />
+                     <span>Dex Screener</span>
+                  </a>
+                  <a href="Tools" class="_scale_hover">
+                     <img src="./image/Tools.svg" alt="Tools" />
+                     <span>Dex Tools</span>
+                  </a>
+                  <a href="Twitter" class="_scale_hover">
+                     <img src="./image/twitter.svg" alt="Twitter" />
+                     <span>Twitter</span>
+                  </a>
+                  <a href="Telegram" class="_scale_hover">
+                     <img src="./image/telegram.svg" alt="telegram" />
+                     <span>Telegram</span>
+                  </a>
+               </div>
+            </div>
+         </section>
+      </div>
+      <div class="copied_modal">copied to clipboard</div>
+<script>
+	document.querySelectorAll('.second__images video').forEach(video => {
+    const maskUrl = video.dataset.masc;
+    if (maskUrl) {
+        video.style.webkitMaskImage = `url(${maskUrl})`;
+        video.style.maskImage = `url(${maskUrl})`;
+    }
+});
+</script>
+      <!-- <div class="loop-images">
+    <div class="left">
+      <img src="./image/image-1.png" class="image image-1">
+      <img src="./image/image-2.png" class="image image-2">
+      <img src="./image/image-3.png" class="image image-3">
+      <img src="./image/image-4.png" class="image image-4">
+    </div>
+    <div class="right">
+      <img src="./image/image-1.png" class="image image-1">
+      <img src="./image/image-2.png" class="image image-2">
+      <img src="./image/image-3.png" class="image image-3">
+      <img src="./image/image-4.png" class="image image-4">
+    </div>
+  </div> -->
+      <script src="js/api_img.js?v1"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+      <script src="./copy.js?v2"></script>
+      <script src="./animation.js?v5"></script>
+      <script src="./popup.js?v5"></script>
+      <script src="./script.js?v5"></script>
+   </body>
+</html>
