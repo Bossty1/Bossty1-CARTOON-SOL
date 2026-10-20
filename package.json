@@ -18,6 +18,7 @@
     "@fontsource/delicious-handrawn": "^5.3.0",
     "@fontsource/knewave": "^5.3.0",
     "@fontsource/nunito": "^5.2.5",
+    "onnxruntime-web": "^1.30.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

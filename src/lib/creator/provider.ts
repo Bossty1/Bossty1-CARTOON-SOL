@@ -20,6 +20,13 @@
  * AI, and nothing invents a result that was not produced.
  */
 
+import {
+  neuralModelInfo,
+  neuralRuntimeAvailable,
+  runNeuralCartoon,
+  type NeuralStyle,
+} from './neural'
+
 export type StyleId =
   | 'classic'
   | 'anime'
@@ -64,12 +71,12 @@ export interface CartoonProvider {
 }
 
 export const STYLES: StyleOption[] = [
-  { id: 'classic', label: 'Classic cartoon', description: 'Clean colour blocks and soft outlines.' },
-  { id: 'anime', label: 'Anime', description: 'Smooth colour areas with crisp line work.' },
-  { id: 'comic', label: 'Comic book', description: 'Bold ink lines and punchy colours.' },
-  { id: 'storybook', label: 'Storybook', description: 'Warm, gentle tones with soft shading.' },
-  { id: 'nostalgic', label: 'Nostalgic', description: 'Slightly faded, old-cartoon feel.' },
-  { id: 'threeD', label: '3D-ish', description: 'Glossy highlights and boosted contrast.' },
+  { id: 'anime', label: 'Anime (Shinkai)', description: 'AnimeGANv2 Shinkai look — vivid skies and colour.' },
+  { id: 'classic', label: 'Classic (Hayao)', description: 'AnimeGANv2 Hayao look — soft Ghibli-style palette.' },
+  { id: 'comic', label: 'Bold (Paprika)', description: 'AnimeGANv2 Paprika look — punchy, high-contrast anime.' },
+  { id: 'storybook', label: 'Soft storybook', description: 'Gentle Hayao look, lightly blended with the photo.' },
+  { id: 'nostalgic', label: 'Nostalgic', description: 'Paprika look, slightly faded toward the original.' },
+  { id: 'threeD', label: 'Poster', description: 'Full-strength Shinkai anime rendering.' },
 ]
 
 /* ------------------------------------------------------------------ *
@@ -401,19 +408,70 @@ export class RemoteCartoonProvider implements CartoonProvider {
 }
 
 /**
+ * In-browser neural provider (AnimeGANv2 via ONNX Runtime Web). This is a real
+ * learned model running on the visitor's device, so it reports `isAi: true`.
+ * The three bundled AnimeGANv2 looks are mapped from the site's style IDs.
+ */
+const NEURAL_STYLE: Record<StyleId, NeuralStyle> = {
+  classic: 'hayao',
+  storybook: 'hayao',
+  nostalgic: 'paprika',
+  comic: 'paprika',
+  anime: 'shinkai',
+  threeD: 'shinkai',
+}
+
+const NEURAL_STRENGTH: Record<StyleId, number> = {
+  classic: 0.95,
+  storybook: 0.85,
+  nostalgic: 0.9,
+  comic: 1,
+  anime: 1,
+  threeD: 1,
+}
+
+export class NeuralCartoonProvider implements CartoonProvider {
+  readonly id = 'animeganv2-onnx'
+  readonly label = 'AnimeGANv2 (in-browser)'
+  readonly isAi = true
+  readonly available = true
+
+  async generate(input: GenerateInput, onProgress?: ProgressFn): Promise<GenerateResult> {
+    const style = NEURAL_STYLE[input.style] ?? 'hayao'
+    const strength = NEURAL_STRENGTH[input.style] ?? 1
+    const output = await runNeuralCartoon(input.file, style, strength, onProgress)
+    const info = neuralModelInfo(style)
+    return {
+      url: URL.createObjectURL(output.blob),
+      blob: output.blob,
+      engine: this.id,
+      isAi: true,
+      note: `${info.label} — a learned neural style-transfer model run in your browser. ${info.credit}.`,
+    }
+  }
+}
+
+/**
  * Pick the best provider available. The remote studio is preferred only when a
- * base URL is configured; otherwise the canvas provider always works.
+ * base URL is configured; otherwise the in-browser neural model is used, with
+ * the canvas filter as a last resort.
  */
 export function resolveProvider(): CartoonProvider {
   if (REMOTE_BASE) {
     return new RemoteCartoonProvider(REMOTE_BASE, false)
+  }
+  if (neuralRuntimeAvailable()) {
+    return new NeuralCartoonProvider()
   }
   return new CanvasCartoonProvider()
 }
 
 export const providerStatus = {
   remoteConfigured: Boolean(REMOTE_BASE),
+  neuralAvailable: neuralRuntimeAvailable(),
   note: REMOTE_BASE
     ? 'Connected to the Cartoon AI Studio API.'
-    : 'Running the built-in canvas filter. Set VITE_CARTOON_API_BASE to use the studio backend.',
+    : neuralRuntimeAvailable()
+      ? 'Running AnimeGANv2 in your browser with ONNX Runtime Web.'
+      : 'Running the built-in canvas filter. Set VITE_CARTOON_API_BASE to use the studio backend.',
 }
